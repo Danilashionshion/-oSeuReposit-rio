@@ -1,13 +1,16 @@
 import './App.css'
 import './index.css'
-import './componentes/Navbar.jsx'
+import Navbar from './componentes/Navbar.jsx'
+import  SimpleContainer from './componentes/Textbox.jsx'
 
 function App() {
   
 
   return (
+    
     <>
-      <Navbar />
+      <Navbar/>
+      <SimpleContainer/>
     </>
   )
 }
