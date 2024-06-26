@@ -1,6 +1,6 @@
 import './App.css'
 import './index.css'
-import Navbar from './componentes/Navbar.jsx'
+import MenuAppBar from './componentes/Navbar.jsx'
 import  SimpleContainer from './componentes/Textbox.jsx'
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
   return (
     
     <>
-      <Navbar/>
+      <MenuAppBar/>
       <SimpleContainer/>
     </>
   )

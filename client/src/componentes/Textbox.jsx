@@ -8,6 +8,12 @@ export default function SimpleContainer() {
   return (
     <React.Fragment>
       <CssBaseline />
+      <Container maxWidth="xs">
+        <Box sx={{border: 'solid 1px', marginBottom: '30px', textAlign: 'center', borderRadius: '10px'}}>
+            Conheça um pouco mais sobre nós
+        </Box>
+
+      </Container>
       <Container maxWidth="sm">
         
         <Box sx={{maxHeight: '200vh',border: 'solid 1px', borderRadius: '10px', padding: '20px'}} > Ola, Este texto é apenas um exemplo de como deverá se
