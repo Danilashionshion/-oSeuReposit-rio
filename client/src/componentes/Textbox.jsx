@@ -23,9 +23,9 @@ export default function SimpleContainer() {
          que estejam incluidos em Containers utilizando a biblioteca Mui, então só para completar a pagina, eu falarei isso</Box>
             <Container> 
                 <Box sx={{border: 'solid 1px', 
-                borderRadius: '10px', padding: '20px', textAlign :'center', borderTop: 'none', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', backgroundColor: '#FF3D00'}}> 
+                borderRadius: '10px', padding: '20px', textAlign :'center', borderTop: 'none', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', backgroundColor: '#FF3D00', fontSize: '24px', color: 'white'}}> 
                 
-                <a href="">Sobre nós</a>
+                <a href="client/src/Login.jsx">Doe agora :D</a>
             
                 </Box></Container>
       </Container>

@@ -49,7 +49,7 @@ export default function MenuAppBar() {
                 color="inherit"
               >
                 <Stack direction="row" spacing={2}>
-                    <Avatar alt="Danilo" src="/static/images/avatar/1.jpg" />
+                    <Avatar alt="Felipe" src="/static/images/avatar/1.jpg" />
                 </Stack>
               </IconButton>
               <Menu
@@ -68,7 +68,7 @@ export default function MenuAppBar() {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>Logout</MenuItem>
               </Menu>
             </div>
           )}
@@ -77,3 +77,4 @@ export default function MenuAppBar() {
     </Box>
   );
 }
+
