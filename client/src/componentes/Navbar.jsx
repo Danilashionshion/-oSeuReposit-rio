@@ -14,6 +14,7 @@ import Menu from '@mui/material/Menu';
 import { Container, height } from '@mui/system';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
+import { Link } from 'react-router-dom';
 
 export default function MenuAppBar() {
   const [auth, setAuth] = React.useState(true);
@@ -35,7 +36,9 @@ export default function MenuAppBar() {
           
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Container>
+            <Link to={"/home"}>
             <img src='./src/imagens/logocomespaco.png' width={'200px'}></img>
+            </Link>
             </Container>
           </Typography>
           {auth && (
@@ -49,7 +52,7 @@ export default function MenuAppBar() {
                 color="inherit"
               >
                 <Stack direction="row" spacing={2}>
-                    <Avatar alt="Felipe" src="/static/images/avatar/1.jpg" />
+                    <Avatar alt="Leticia" src="/static/images/avatar/1.jpg" />
                 </Stack>
               </IconButton>
               <Menu
@@ -67,8 +70,9 @@ export default function MenuAppBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                <MenuItem onClick={handleClose}><Link to={"/Login"}> Login </Link></MenuItem>
+                <MenuItem onClick={handleClose}><Link to={"/Account-Create"}>Create an Account</Link></MenuItem>
+                
               </Menu>
             </div>
           )}

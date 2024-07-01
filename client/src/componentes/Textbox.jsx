@@ -3,6 +3,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { alignProperty } from '@mui/material/styles/cssUtils';
+import { Link } from 'react-router-dom';
 
 export default function SimpleContainer() {
   return (
@@ -25,7 +26,7 @@ export default function SimpleContainer() {
                 <Box sx={{border: 'solid 1px', 
                 borderRadius: '10px', padding: '20px', textAlign :'center', borderTop: 'none', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', backgroundColor: '#FF3D00', fontSize: '24px', color: 'white'}}> 
                 
-                <a href="client/src/Login.jsx">Doe agora :D</a>
+                <Link to={"/"}> Doe Agora :D </Link>
             
                 </Box></Container>
       </Container>
