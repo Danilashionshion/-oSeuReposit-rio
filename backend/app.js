@@ -1,12 +1,14 @@
 import express from 'express';
 import register from './connection.js';
 import bcrypt from 'bcryptjs'
+import cors from 'cors'
 
 const app=express();
 const PORT=3240
 
 
 app.use(express.json())
+app.use(cors(''))
 
 app.get("/",async(req,res)=>{
 const src=await register.find();
