@@ -26,7 +26,7 @@ export default function SimpleContainer() {
                 <Box sx={{border: 'solid 1px', 
                 borderRadius: '10px', padding: '20px', textAlign :'center', borderTop: 'none', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', backgroundColor: '#FF3D00', fontSize: '24px', color: 'white'}}> 
                 
-                <Link to={"/"}> Doe Agora :D </Link>
+                <Link to={"/Doe-agora"}> Doe Agora :D </Link>
             
                 </Box></Container>
       </Container>

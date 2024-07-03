@@ -5,25 +5,27 @@ import Login from './Login.jsx'
 import './index.css'
 import ErrorMen from './Error.jsx'
 import CreateAccount from "./CreateAccount.jsx"
+import Doeagora from './doeagora.jsx'
 //configuration
 import{ createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router = createBrowserRouter([
   {
-    path: "",
-    element: <App />
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorMen />
   },
   {
-    path: "Login",
+    path: "/Login",
     element: <Login />
   },
   {
-    path: "Account-Create",
+    path: "/Account-Create",
     element: <CreateAccount />
   },
   {
-    path: "/",
-    errorElement: <ErrorMen />
+    path: "/Doe-agora",
+    element: <Doeagora />
   }
 ])
 

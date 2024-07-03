@@ -36,7 +36,7 @@ export default function MenuAppBar() {
           
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Container>
-            <Link to={"/home"}>
+            <Link to={"/"}>
             <img src='./src/imagens/logocomespaco.png' width={'200px'}></img>
             </Link>
             </Container>
@@ -52,7 +52,8 @@ export default function MenuAppBar() {
                 color="inherit"
               >
                 <Stack direction="row" spacing={2}>
-                    <Avatar alt="Leticia" src="/static/images/avatar/1.jpg" />
+                  
+                    <Avatar alt="" src="/static/images/avatar/1.jpg" />
                 </Stack>
               </IconButton>
               <Menu
@@ -70,6 +71,7 @@ export default function MenuAppBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
+
                 <MenuItem onClick={handleClose}><Link to={"/Login"}> Login </Link></MenuItem>
                 <MenuItem onClick={handleClose}><Link to={"/Account-Create"}>Create an Account</Link></MenuItem>
                 
