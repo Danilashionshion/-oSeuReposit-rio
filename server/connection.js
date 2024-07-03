@@ -11,4 +11,9 @@ senha:{type:String,required:true,min:6,max:200},
 data:{type:Date,default:Date.now}
 });
 
-export default register
+const login=mongoose.model("Login",{
+    email:{type:String,required:true,min:24,max:200},
+    senha:{type:String,required:true,min:6,max:200},
+    });
+    
+export default (register,login)

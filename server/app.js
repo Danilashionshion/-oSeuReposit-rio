@@ -1,5 +1,6 @@
 import express from 'express';
 import register from './connection.js';
+import login from './connection.js';
 import bcrypt from "bcryptjs"
 
 
@@ -32,7 +33,7 @@ try {
 
 })
 
-app.post("/",async (req,res)=>{
+app.post("/register",async (req,res)=>{
     const verification=await register.findOne({email:req.body.email})
     if(verification)return res.status(400).send("Email Já Existente!.");
 
@@ -54,6 +55,25 @@ app.post("/",async (req,res)=>{
 })
 
 
+
+app.post("/login",async (req,res)=>{
+    const verification=await register.findOne({email:req.body.email})
+    if(!verification)return res.status(400).send("Email ou senha incorretos!.");
+
+    const verificationSenha=await bcrypt.compareSync(req.body.senha,verification.senha) 
+    if(verificationSenha==false)return res.status(400).send("Email ou senha incorretos!.");
+
+    const log=new login ({
+        email:req.body.email,
+        senha:bcrypt.hashSync(req.body.senha)
+    })
+
+    try { log.save()
+        res.send("logado com sucesso")
+    } catch (error) {
+        console.log(error)  
+    }
+});
 
 
 
