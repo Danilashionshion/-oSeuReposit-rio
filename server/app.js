@@ -1,19 +1,24 @@
 import express from 'express';
 import register from './connection.js';
-import login from './connection.js';
+import login from './connection2.js';
+import doeagora from './connection3.js';
 import bcrypt from "bcryptjs"
-
+import cors from 'cors'
 
 
 const app=express()
 const PORT=3200
 
 app.use(express.json())
+app.use(cors('http://localhost:5173'))
 
 
-
-app.get("/",async(req,res)=>{
+app.get("/register",async(req,res)=>{
     const src=await register.find()
+    res.send(src)
+});
+app.get("/login",async(req,res)=>{
+    const src=await login.find()
     res.send(src)
 });
 
@@ -34,16 +39,19 @@ try {
 })
 
 app.post("/register",async (req,res)=>{
+    let cad=null
     const verification=await register.findOne({email:req.body.email})
-    if(verification)return res.status(400).send("Email Já Existente!.");
+    if(verification)
+        {return res.status(400).send("Email Já Existente!.")}
+    else{
 
-        const cad=new register({
+        cad=new register({
             nome:req.body.nome,
             cpf:req.body.cpf,
             email:req.body.email,
             senha:bcrypt.hashSync(req.body.senha)
 
-        });
+    })};
 
         try {
             const sucess=await cad.save()
@@ -74,6 +82,43 @@ app.post("/login",async (req,res)=>{
         console.log(error)  
     }
 });
+
+app.get("/doe", async (req, res) => {
+    const Armario = await doeagora.find();
+    res.send(Armario)
+})
+
+app.post("/doe", async (req, res) => {
+    const name = req.body.nome;
+    const sobrenome = req.body.sobrenome;
+    const donate = req.body.donate;
+    const cep = req.body.cep;
+    const rua = req.body.rua;
+    const numero=req.body.numero
+    const bairro = req.body.bairro;
+    const cidade = req.body.cidade;
+    const estado = req.body.estado;
+
+    const people = new doeagora({
+
+        nome: name,
+        sobrenome: sobrenome,
+        donate: donate,
+        cep: cep,
+        rua: rua,
+        numero:numero,
+        bairro: bairro,
+        cidade: cidade,
+        estado: estado
+
+    });
+    try {
+      const sucess=await people.save();
+    res.send("Inserido Com Sucesso!")
+    } catch (error) {
+        console.error(error)
+    }
+    });
 
 
 
