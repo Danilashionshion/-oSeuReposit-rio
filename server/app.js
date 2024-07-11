@@ -1,13 +1,17 @@
 import express from 'express';
 import register from './connection.js';
-import login from './connection2.js';
+import midlogin from './login.js';
 import doeagora from './connection3.js';
-import bcrypt from "bcryptjs"
 import cors from 'cors'
+import midlogout from './logout.js';
+import midregister from './midregister.js';
+import dotenv from 'dotenv'
+import authenticateToken from './logout.js';
 
+dotenv.config()
 
 const app=express()
-const PORT=3200
+const PORT=process.env.PORT||3200
 
 app.use(express.json())
 app.use(cors('http://localhost:5173'))
@@ -17,13 +21,10 @@ app.get("/register",async(req,res)=>{
     const src=await register.find()
     res.send(src)
 });
-app.get("/login",async(req,res)=>{
-    const src=await login.find()
-    res.send(src)
-});
 
 app.delete("/:id",async(req,res)=>{
 const id=req.params.id
+
 
 
 
@@ -38,50 +39,11 @@ try {
 
 })
 
-app.post("/register",async (req,res)=>{
-    let cad=null
-    const verification=await register.findOne({email:req.body.email})
-    if(verification)
-        {return res.status(400).send("Email Já Existente!.")}
-    else{
+app.post("/register",midregister)
 
-        cad=new register({
-            nome:req.body.nome,
-            cpf:req.body.cpf,
-            email:req.body.email,
-            senha:bcrypt.hashSync(req.body.senha)
+app.post("/logout", midlogout)
 
-    })};
-
-        try {
-            const sucess=await cad.save()
-            res.send("REGISTRADO COM SUCESSO!")
-        } catch (error) {
-            console.log(error)
-            res.status(400).send("ERRO")
-        }
-})
-
-
-
-app.post("/login",async (req,res)=>{
-    const verification=await register.findOne({email:req.body.email})
-    if(!verification)return res.status(400).send("Email ou senha incorretos!.");
-
-    const verificationSenha=await bcrypt.compareSync(req.body.senha,verification.senha) 
-    if(verificationSenha==false)return res.status(400).send("Email ou senha incorretos!.");
-
-    const log=new login ({
-        email:req.body.email,
-        senha:bcrypt.hashSync(req.body.senha)
-    })
-
-    try { log.save()
-        res.send("logado com sucesso")
-    } catch (error) {
-        console.log(error)  
-    }
-});
+app.post("/login",midlogin);
 
 app.get("/doe", async (req, res) => {
     const Armario = await doeagora.find();
@@ -120,7 +82,16 @@ app.post("/doe", async (req, res) => {
     }
     });
 
-
+    app.post('/logout', authenticateToken, (req, res) => {
+        const token = req.headers['authorization'].split(' ')[1];
+        revokedTokens.push(token);
+        res.status(200).send("Logout realizado com sucesso!");
+    });
+    
+    // Rota protegida para teste
+    app.get('/teste', authenticateToken, (req, res) => {
+        res.json(req.user);
+    })
 
 
 app.listen(PORT,()=>{

@@ -1,7 +1,11 @@
 import { text } from "express";
 import mongoose from "mongoose";
+import dotenv from 'dotenv'
 
-mongoose.connect("mongodb+srv://adrianorodrigoteixeira:armariolivre@clusterarmariolivre.tc5gdjg.mongodb.net/");
+dotenv.config();
+
+const IP=process.env.REGISTER_DB
+mongoose.connect(IP);
 
 const register=mongoose.model("Register",{
 nome:{type:String,required:true,min:10,max:50},

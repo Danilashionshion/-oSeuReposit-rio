@@ -4,22 +4,20 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { Container, height } from '@mui/system';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 export default function MenuAppBar() {
+  const Navigate = useNavigate()
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
+ 
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -28,7 +26,36 @@ export default function MenuAppBar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  const verifyToken = () => {
+    const veri = localStorage.getItem('Authorization');
+    if(!veri){
+      alert("Nao Está logado!")
+    }else{
+      alert("Deslogado Com Sucesso!")
+    }
+  }
+  const verifyTokenLogin = (user,logged) => {
+    const veri = localStorage.getItem('Authorization');
+    if(veri){
+      alert("JÁ ESTÁ LOGADO!")
+        Navigate('/')
+    }
+    else{
+      Navigate('/Login')
+    }
+  }
+  const logout = () => {
+    verifyToken();
+    localStorage.clear();
+    handleClose();
+    window.location.reload(true)
+  }
+  const login = () => {
+    verifyTokenLogin();
+    handleClose();
+    
+  }
+ 
   return (
     <Box>
       <AppBar position="static" sx={{marginBottom: '50px', backgroundColor: '#FF3D00'}}>
@@ -41,6 +68,10 @@ export default function MenuAppBar() {
             </Link>
             </Container>
           </Typography>
+            { localStorage.getItem('Authorization') ? <Button onClick={logout}  sx={{border: '1px solid black', marginRight: '3px', backgroundColor: 'white' , color: 'black'}}> Logout </Button> :<div> <Button onClick={login}  
+            sx={{border: '1px solid black',  marginRight: '3px', backgroundColor: 'white' , color: 'black'}}
+            >Login</Button>  
+            <Button onClick={handleClose} sx={{border: '1px solid black',  marginRight: '3px', backgroundColor: 'white' , color: 'black'}}><Link to={"/Account-Create"}>Create an Account</Link></Button> </div>}
           {auth && (
             <div>
               <IconButton
@@ -56,29 +87,10 @@ export default function MenuAppBar() {
                     <Avatar alt="" src="/static/images/avatar/1.jpg" />
                 </Stack>
               </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-
-                <MenuItem onClick={handleClose}><Link to={"/Login"}> Login </Link></MenuItem>
-                <MenuItem onClick={handleClose}><Link to={"/Account-Create"}>Create an Account</Link></MenuItem>
-                
-              </Menu>
             </div>
           )}
         </Toolbar>
+        
       </AppBar>
     </Box>
   );

@@ -85,7 +85,7 @@ export default function Doeagora(){
                         <h1> O que vai ser doado? </h1>
                         <Input type="text" {...register("donate")}></Input>
                         <h1>CEP</h1>
-                        <input type="text" {...register("cep")} className='input' placeholder='CEP' onBlur={checkCEP} />
+                        <input type="text" {...register("cep")} className='input'  onBlur={checkCEP} />
         {errors.cep && <span className="error-message">{errors.cep.message}</span>}
                         <h1>Rua</h1>
                         <Input type="text" {...register("rua")}></Input>

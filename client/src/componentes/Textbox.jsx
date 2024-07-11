@@ -17,11 +17,7 @@ export default function SimpleContainer() {
       </Container>
       <Container maxWidth="sm">
         
-        <Box sx={{maxHeight: '200vh',border: 'solid 1px', borderRadius: '10px', padding: '20px'}} > Ola, Este texto é apenas um exemplo de como deverá se
-        r o produto final, por favor, troque pelo que você achar melhor, claro, tendo em vista que já tem algo em
-         mente, nesta 
-         caixa podera fazer diversos testes 
-         que estejam incluidos em Containers utilizando a biblioteca Mui, então só para completar a pagina, eu falarei isso</Box>
+        <Box sx={{maxHeight: '200vh',border: 'solid 1px', borderRadius: '10px', padding: '20px'}} >No Armário Livre, cada doação conta uma história de solidariedade. Conectamos doadores a quem mais precisa, tornando simples o ato de ajudar. Cadastre-se, liste suas doações e faça a diferença. Junte-se a nós para construir um mundo mais generoso e sustentável. Obrigado por fazer parte dessa corrente do bem!</Box>
             <Container> 
                 <Box sx={{border: 'solid 1px', 
                 borderRadius: '10px', padding: '20px', textAlign :'center', borderTop: 'none', borderTopLeftRadius: '0px', borderTopRightRadius: '0px', backgroundColor: '#FF3D00', fontSize: '24px', color: 'white'}}> 

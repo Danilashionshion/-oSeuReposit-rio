@@ -35,7 +35,9 @@ export default function Login(){
         };
     
         const onSubmit = (data) => {
-            api.post("/login", data).then((response) => {
+            api.post("/login", data).then(async(response) => {
+                
+                localStorage.setItem('Authorization', JSON.stringify(response.data));
                 console.log('User logged: ', response.data);
                 fetchUsers();
                 navigate('/')
@@ -44,6 +46,7 @@ export default function Login(){
                 console.error('Error logged user:', error);
               });
         }
+        
     return(
         <>
             <MenuAppBar />

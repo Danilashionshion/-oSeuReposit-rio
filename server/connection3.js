@@ -1,6 +1,10 @@
 import mongoose, { Schema } from "mongoose";
+import dotenv from 'dotenv'
 
-mongoose.connect("mongodb+srv://adrianorodrigoteixeira:armariolivre@clusterarmariolivre.tc5gdjg.mongodb.net/");
+dotenv.config();
+
+const IP=process.env.DONATE_DB;
+mongoose.connect(IP);
 
 const doeagora = mongoose.model("ArmarioLivre", new Schema({
     nome:{type:String,required:true,min:3,max:200},
