@@ -14,8 +14,12 @@ const app=express()
 const PORT=process.env.PORT||3200
 
 app.use(express.json())
-app.use(cors('http://localhost:5173'))
-
+app.use(cors({
+    origin :["https://pi-9e4y.vercel.app"],
+    methods: ["POST", "GET"],
+    credentials: true
+}))
+    
 
 app.get("/register",async(req,res)=>{
     const src=await register.find()
