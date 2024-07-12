@@ -1,3 +1,8 @@
 node_modules/
+<<<<<<< HEAD
 README.md 
 .env
+=======
+README.md
+.env
+>>>>>>> 0a6239e1e216e796e97d7b904ca01871cec1e465
