@@ -19,7 +19,6 @@ app.use(cors({
     methods: ["POST", "GET"],
     credentials: true
 }))
-mongoose.connect("mongodb+srv://adrianorodrigoteixeira:<password>@clusterarmariolivre.tc5gdjg.mongodb.net/?retryWrites=true&w=majority&appName=ClusterArmarioLivre")
 
 
 app.get("/register",async(req,res)=>{
