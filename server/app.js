@@ -15,11 +15,19 @@ const PORT=process.env.PORT||3200
 
 app.use(express.json())
 app.use(cors({
+<<<<<<< HEAD
     origin :["https://pi-9e4y.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true
 }))
     
+=======
+    origin :["https://pi-9e4y-itr8dz4nx-danilashionshions-projects.vercel.app"],
+    methods: ["POST", "GET"],
+    credentials: true
+}))
+
+>>>>>>> f44788ac4533d4c2557055b449feeb31f93dd050
 
 app.get("/register",async(req,res)=>{
     const src=await register.find()

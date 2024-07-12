@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";0
 import { useState } from "react";
 
 const api = axios.create({
-    baseURL: ('http://localhost:3200/')
+    baseURL: ('pi-gold.vercel.app')
 })
 
 export default function Login(){

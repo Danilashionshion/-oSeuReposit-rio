@@ -8,7 +8,7 @@ import axios from 'axios'
 function App() {
   
   const api = axios.create({
-    baseURL:('http//:localhost:3240')
+    baseURL:('pi-gold.vercel.app')
   })
   return (
     
